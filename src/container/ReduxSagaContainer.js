@@ -8,12 +8,12 @@ class ReduxSagaContainer extends Component {
 
     successBtnClick(){
         const { ReduxSagaExampleActions } = this.props;
-        ReduxSagaExampleActions.asyncRequest(`https://jsonplaceholder.typicode.com/posts/1`);
+        ReduxSagaExampleActions.asyncCall(`https://jsonplaceholder.typicode.com/posts/1`);
     }
 
     failBtnClick(){
         const { ReduxSagaExampleActions } = this.props;
-        ReduxSagaExampleActions.asyncRequest(`https://jsonplaceholder.typicode.com/3232posts/1`);
+        ReduxSagaExampleActions.asyncCall(`https://jsonplaceholder.typicode.com/3232posts/1`);
     }
   render() {
       const { count, title, body } = this.props;
@@ -25,7 +25,7 @@ class ReduxSagaContainer extends Component {
          <div>redux title is <span> {title}</span></div>
          <div>
              <button onClick={(e)=>{
-                 this.successBtnClick()}}>apiSuccessCallButton</button>
+                 this.successBtnClick()}}>apiSuccessCallButtons</button>
              <button onClick={(e)=>{
                  this.failBtnClick()}}>apiFailCallButton</button>
          </div>
