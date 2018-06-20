@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as ReduxSagaExampleActions from '../saga/modules/ReduxSagaExample';
+import * as ReduxSagaExampleActions from '../core/reducers/ReduxSagaExample';
 import ReduxSagaComponent from '../component/ReduxSagaComponent';
 
 class ReduxSagaContainer extends Component {
 
     successBtnClick(){
         const { ReduxSagaExampleActions } = this.props;
-        ReduxSagaExampleActions.asyncCall(`https://jsonplaceholder.typicode.com/posts/1`);
+        ReduxSagaExampleActions.asyncCalling(1);
     }
 
     failBtnClick(){
         const { ReduxSagaExampleActions } = this.props;
-        ReduxSagaExampleActions.asyncCall(`https://jsonplaceholder.typicode.com/3232posts/1`);
+        ReduxSagaExampleActions.asyncCalling('12/e212');
     }
   render() {
       const { count, title, body } = this.props;
