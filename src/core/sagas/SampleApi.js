@@ -1,5 +1,5 @@
 import { call, all, take, fork } from "redux-saga/effects";
-import { asyncCalling ,asyncRequest, asyncRequestFailure, asyncRequestSuccess} from "../reducers/ReduxSagaExample";
+import { asyncCalling ,asyncRequest, asyncRequestFailure, asyncRequestSuccess} from "../actions/SampleApi";
 import * as SampleAPI  from '../apis/SampleApi';
 import { asyncCall } from './Common';
 

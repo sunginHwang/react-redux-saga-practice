@@ -5,10 +5,11 @@ import rootSaga from './sagas';
 
 export default function configureStore(initialState) {
     const sagaMiddleware = createSagaMiddleware();
+    const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 
     const store = createStore(
         reducers,
-        initialState,
+        devTools,
         applyMiddleware(
             sagaMiddleware
         )

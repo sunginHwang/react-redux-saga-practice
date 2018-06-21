@@ -1,10 +1,5 @@
-import { createAction, handleActions } from 'redux-actions';
-import * as SampleApiType from '../actionTypes/SampleApi';
-
-export const asyncCalling = createAction(SampleApiType.ASYNC);
-export const asyncRequest = createAction(SampleApiType.ASYNC_REQUEST);
-export const asyncRequestSuccess = createAction(SampleApiType.ASYNC_REQUEST_SUCCESS);
-export const asyncRequestFailure = createAction(SampleApiType.ASYNC_REQUEST_FAILURE);
+import {  handleActions } from 'redux-actions';
+import * as ACTION from '../actions/SampleApi';
 
 const initialState = {
     count: 0,
@@ -14,15 +9,15 @@ const initialState = {
 };
 
 export const ReduxSagaExampleReducer =  handleActions({
-    [asyncRequest]: (state, payload) => {
+    [ACTION.asyncRequest]: (state, payload) => {
         console.log('request');
         return { ...state, status: 'request', count:100 };
     },
-    [asyncRequestSuccess]: (state, payload) => {
+    [ACTION.asyncRequestSuccess]: (state, payload) => {
         console.log('success');
         return { ...state, status: 'success',count: 200, body:payload.payload.data.body, title: payload.payload.data.title };
     },
-    [asyncRequestFailure]: (state, payload) => {
+    [ACTION.asyncRequestFailure]: (state, payload) => {
         console.log('fail');
         return { ...state, status: 'fail', count:404, body:'', title: '' };
     },

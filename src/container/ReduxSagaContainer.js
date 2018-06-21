@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as ReduxSagaExampleActions from '../core/reducers/ReduxSagaExample';
+import * as sampleAction from '../core/actions/SampleApi';
 import ReduxSagaComponent from '../component/ReduxSagaComponent';
 
 class ReduxSagaContainer extends Component {
 
     successBtnClick(){
-        const { ReduxSagaExampleActions } = this.props;
-        ReduxSagaExampleActions.asyncCalling(1);
+        const { sampleAction } = this.props;
+        sampleAction.asyncCalling(1);
     }
 
     failBtnClick(){
-        const { ReduxSagaExampleActions } = this.props;
-        ReduxSagaExampleActions.asyncCalling('12/e212');
+        const { sampleAction } = this.props;
+        sampleAction.asyncCalling('12/e212');
     }
   render() {
       const { count, title, body } = this.props;
@@ -40,6 +40,6 @@ export default connect(
         title: state.ReduxSagaExampleReducer.title
     }),
     (dispatch) => ({
-        ReduxSagaExampleActions: bindActionCreators(ReduxSagaExampleActions, dispatch),
+        sampleAction: bindActionCreators(sampleAction, dispatch),
     })
 )(ReduxSagaContainer);
