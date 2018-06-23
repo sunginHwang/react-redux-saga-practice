@@ -1,6 +1,6 @@
 import { createAction } from 'redux-actions';
 
- const ASYNC = "ReduxSagaExample/ASYNC";
+ export const ASYNC = "ReduxSagaExample/ASYNC";
  const ASYNC_REQUEST = "ReduxSagaExample/ASYNC_REQUEST";
  const ASYNC_REQUEST_SUCCESS = "ReduxSagaExample/ASYNC_REQUEST_SUCCESS";
  const ASYNC_REQUEST_FAILURE = "ReduxSagaExample/ASYNC_REQUEST_FAILURE";
