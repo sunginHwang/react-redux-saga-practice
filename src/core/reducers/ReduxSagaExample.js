@@ -9,15 +9,15 @@ const initialState = {
 };
 
 export const ReduxSagaExampleReducer =  handleActions({
-    [ACTION.asyncRequest]: (state, payload) => {
+    [ACTION.asyncCall.request]: (state, payload) => {
         console.log('request');
         return { ...state, status: 'request', count:100 };
     },
-    [ACTION.asyncRequestSuccess]: (state, payload) => {
+    [ACTION.asyncCall.success]: (state, payload) => {
         console.log('success');
         return { ...state, status: 'success',count: 200, body:payload.payload.data.body, title: payload.payload.data.title };
     },
-    [ACTION.asyncRequestFailure]: (state, payload) => {
+    [ACTION.asyncCall.failure]: (state, payload) => {
         console.log('fail');
         return { ...state, status: 'fail', count:404, body:'', title: '' };
     },
