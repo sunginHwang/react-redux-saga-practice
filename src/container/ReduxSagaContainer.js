@@ -8,7 +8,6 @@ class ReduxSagaContainer extends Component {
 
     successBtnClick(){
         const { sampleAction } = this.props;
-        console.log(sampleAction);
         sampleAction.asyncCall(1);
     }
 

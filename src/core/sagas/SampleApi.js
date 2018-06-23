@@ -1,21 +1,14 @@
-import {call, all, take, fork, takeLatest, put} from "redux-saga/effects";
-import { asyncCall, ASYNC} from "../actions/SampleApi";
+import {call, all, takeLatest } from "redux-saga/effects";
+import * as SampleApiAction from "../actions/SampleApi";
+import { asyncSaga } from '../util/reduxUtil';
 import * as SampleAPI  from '../apis/SampleApi';
 
 function * asyncRequestSaga(info) {
-
-    try {
-        yield put(asyncCall.request());
-        const json = yield call(SampleAPI.getPostAPI,info.payload);
-        yield put(asyncCall.success(json));
-    } catch(error) {
-        yield put(asyncCall.failure(error));
-    }
-
+    yield call(asyncSaga,SampleApiAction.asyncCall,SampleAPI.getPostAPI, info.payload);
 }
 
 export default function* root() {
     yield all([
-        takeLatest(ASYNC.INDEX, asyncRequestSaga) // asyncCall
+        takeLatest(SampleApiAction.ASYNC.INDEX, asyncRequestSaga) // asyncCall
     ]);
 }

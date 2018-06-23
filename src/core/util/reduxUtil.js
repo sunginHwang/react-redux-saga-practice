@@ -1,4 +1,8 @@
 import {createAction} from "redux-actions";
+import {call, put} from "redux-saga/effects";
+import {asyncCall} from "../actions/SampleApi";
+import * as SampleAPI from "../apis/SampleApi";
+
 /*비동기 액션타입 생성자*/
 export const asyncActionTypeCreator = ( prefix, actionName ) => {
     const asyncTypeAction = ['_INDEX','_REQUEST','_SUCCESS','_FAILURE'];
@@ -24,4 +28,17 @@ export function asyncActionCreator(actions) {
     actionCreator.success = createAction(actions.SUCCESS);
     actionCreator.failure = createAction(actions.FAILURE);
     return actionCreator
+}
+
+
+/*비동기 통신 자동화*/
+export function * asyncSaga(asyncFunction, apiFunction, payload) {
+
+    yield put(asyncFunction.request()); // 요청대기
+    try {
+        const json = yield call(apiFunction,payload); // 비동기처리 promise
+        yield put(asyncFunction.success(json)); // 비동기 처리 성공
+    } catch(error) {
+        yield put(asyncFunction.failure(error)); // 비동기 처리 실패
+    }
 }
